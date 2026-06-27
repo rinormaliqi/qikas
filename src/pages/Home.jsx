@@ -405,13 +405,13 @@ export default function Home() {
             </div>
           </form>
 
-          <div className="qk-contact-meta" style={css('display:inline-flex; flex-wrap:wrap; justify-content:center; gap:36px; margin-top:48px; padding:24px 40px; border-radius:999px; background:#fff; border:1.5px solid var(--qk-pink); box-shadow:0 8px 30px -12px rgba(212,1,74,0.18); font-size:13px;')}>
+          {/* <div className="qk-contact-meta" style={css('display:inline-flex; flex-wrap:wrap; justify-content:center; gap:36px; margin-top:48px; padding:24px 40px; border-radius:999px; background:#fff; border:1.5px solid var(--qk-pink); box-shadow:0 8px 30px -12px rgba(212,1,74,0.18); font-size:13px;')}>
             <div style={css('display:flex; align-items:center; gap:10px;')}><span style={css('display:inline-block; width:8px; height:8px; background:var(--qk-pink); border-radius:50%; box-shadow:0 0 0 4px rgba(212,1,74,0.2);')}></span>Booking Q3 · 3 of 4 slots filled</div>
             <div style={css('opacity:0.5;')}>·</div>
             <div>join@qikas.house</div>
             <div style={css('opacity:0.5;')}>·</div>
             <div>Rr. Bedri Pejani 14, 10000 Prishtina</div>
-          </div>
+          </div> */}
         </div>
       </section>
 

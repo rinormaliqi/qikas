@@ -7,7 +7,7 @@
  * radius / overflow / hover-grow, so this just fills its frame.
  */
 export default function ImageSlot({
-  src = '/public/assets/qikas-logo.png',
+  src = '/assets/qikas-logo.png',
   alt = '',
   placeholder = 'Photography',
   ratio = '4/5',

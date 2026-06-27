@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlot from '../components/ImageSlot.jsx';
+import WorkStory from '../components/WorkStory.jsx';
 import { css } from '../lib/css.js';
 
 const masonry = [
@@ -51,10 +52,6 @@ const marqueeStyles = {
   1: 'font-family:var(--qk-serif); font-style:italic; color:#fff; line-height:1;',
   2: 'font-family:var(--qk-serif); font-style:italic; color:#fff; text-transform:lowercase; line-height:1;',
 };
-
-// Shared chip styles (two-colour).
-const metaPill = 'display:inline-block; padding:8px 18px; border-radius:999px; background:var(--qk-pink); font-family:var(--qk-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#fff; margin-bottom:28px;';
-const statChip = 'padding:18px 26px; border-radius:999px; background:#fff; border:1.5px solid var(--qk-pink); box-shadow:0 8px 20px -10px rgba(212,1,74,0.15);';
 
 const ENDPOINT = '';
 
@@ -242,93 +239,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============== SELECTED WORK ============== */}
-      <section id="work" style={css('padding:140px var(--qk-gutter); background:var(--qk-white); border-radius:64px 64px 0 0;')}>
-        <div data-reveal className="qk-grid-12" style={css('display:grid; grid-template-columns:1fr 2fr; gap:80px; align-items:end; margin-bottom:96px;')}>
-          <div style={css('font-family:var(--qk-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--qk-pink);')}>Index — 003 / Selected work</div>
-          <h2 className="qk-d-h2" style={css('font-family:var(--qk-display); line-height:0.9; letter-spacing:-0.04em; margin:0; text-transform:uppercase;')}>Recent<br /><span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; color:var(--qk-pink); text-transform:lowercase;')}>chapters.</span></h2>
-        </div>
-
-        {/* Case 1 */}
-        <article data-reveal className="qk-grid-21" style={css('display:grid; grid-template-columns:1.15fr 0.85fr; gap:80px; align-items:center; margin-bottom:140px;')}>
-          <div className="qk-card" style={css('overflow:hidden; border-radius:48px; box-shadow:0 30px 70px -30px rgba(212,1,74,0.30);')}>
-            <div className="qk-hover-grow"><ImageSlot ratio="4/5" placeholder="Sunny Hill — hero image" /></div>
-          </div>
-          <div>
-            <div style={css(metaPill)}>01 — Festival branding · 2025</div>
-            <h3 className="qk-d-case" style={css('font-family:var(--qk-display); line-height:0.92; letter-spacing:-0.04em; margin:0 0 28px; text-transform:uppercase;')}>Sunny Hill<br /><span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; color:var(--qk-pink); text-transform:lowercase;')}>after hours.</span></h3>
-            <p style={css('font-size:17px; line-height:1.6; color:var(--qk-muted); margin:0 0 40px; max-width:480px;')}>A full identity refresh for the Balkans' loudest summer week — visual system, content engine, on-ground signage, and the after-party that everyone remembered.</p>
-            <div style={css('display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;')}>
-              {[['+312%', 'social reach'], ['48k', 'tickets sold'], ['12 mo', 'partnership']].map(([v, l]) => (
-                <div key={l} style={css(statChip)}>
-                  <div style={css('font-family:var(--qk-display); font-size:32px; letter-spacing:-0.02em; color:var(--qk-pink); line-height:1;')}>{v}</div>
-                  <div style={css('font-size:11px; color:var(--qk-faint); letter-spacing:0.04em; margin-top:4px;')}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <a href="#" style={css('display:inline-block; text-decoration:none; color:var(--qk-ink); font-size:14px; font-weight:500;')}><span className="qk-link-underline">Read the case →</span></a>
-          </div>
-        </article>
-
-        {/* Case 2 */}
-        <article data-reveal className="qk-grid-12" style={css('display:grid; grid-template-columns:0.85fr 1.15fr; gap:80px; align-items:center; margin-bottom:140px;')}>
-          <div>
-            <div style={css(metaPill)}>02 — Packaging & identity · 2024</div>
-            <h3 className="qk-d-case" style={css('font-family:var(--qk-display); line-height:0.92; letter-spacing:-0.04em; margin:0 0 28px; text-transform:uppercase;')}>Peja Soda<br /><span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; color:var(--qk-pink); text-transform:lowercase;')}>reissued.</span></h3>
-            <p style={css('font-size:17px; line-height:1.6; color:var(--qk-muted); margin:0 0 40px; max-width:460px;')}>A heritage soda turned cult object — modern bottle architecture, a new visual lexicon for limited drops, and a launch film that traveled further than any banner ad.</p>
-            <div style={css('display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;')}>
-              {[['7 SKUs', 'new range'], ['Sold out', 'limited run'], ['3 markets', 'distribution']].map(([v, l]) => (
-                <div key={l} style={css(statChip)}>
-                  <div style={css('font-family:var(--qk-display); font-size:32px; letter-spacing:-0.02em; color:var(--qk-pink); line-height:1;')}>{v}</div>
-                  <div style={css('font-size:11px; color:var(--qk-faint); letter-spacing:0.04em; margin-top:4px;')}>{l}</div>
-                </div>
-              ))}
-            </div>
-            <a href="#" style={css('display:inline-block; text-decoration:none; color:var(--qk-ink); font-size:14px; font-weight:500;')}><span className="qk-link-underline">Read the case →</span></a>
-          </div>
-          <div className="qk-card" style={css('overflow:hidden; border-radius:48px; box-shadow:0 30px 70px -30px rgba(212,1,74,0.30);')}>
-            <div className="qk-hover-grow"><ImageSlot ratio="4/5" placeholder="Peja Soda — bottle still" /></div>
-          </div>
-        </article>
-
-        {/* Case 3 */}
-        <article data-reveal className="qk-grid-21" style={css('display:grid; grid-template-columns:1.15fr 0.85fr; gap:80px; align-items:center;')}>
-          <div className="qk-card" style={css('overflow:hidden; border-radius:48px; box-shadow:0 30px 70px -30px rgba(212,1,74,0.30);')}>
-            <div className="qk-hover-grow"><ImageSlot ratio="4/5" placeholder="Hima Records — sleeve detail" /></div>
-          </div>
-          <div>
-            <div style={css(metaPill)}>03 — Label identity · 2024</div>
-            <h3 className="qk-d-case-sm" style={css('font-family:var(--qk-display); line-height:0.92; letter-spacing:-0.04em; margin:0 0 28px; text-transform:uppercase;')}>Hima Records,<br /><span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; color:var(--qk-pink); text-transform:lowercase;')}>quietly loud.</span></h3>
-            <p style={css('font-size:17px; line-height:1.6; color:var(--qk-muted); margin:0 0 40px; max-width:480px;')}>A new identity for a young record label rooted in Balkan electronic music — sleeve system, motion language, and a release rhythm built to scale across artists.</p>
-            <a href="#" style={css('display:inline-block; text-decoration:none; color:var(--qk-ink); font-size:14px; font-weight:500;')}><span className="qk-link-underline">Read the case →</span></a>
-          </div>
-        </article>
-      </section>
-
-      {/* ============== MANIFESTO QUOTE ON PINK ============== */}
-      <section id="studio" style={css('padding:180px var(--qk-gutter); background:var(--qk-pink); color:#fff; border-radius:64px; margin-top:-32px; position:relative; overflow:hidden;')}>
-        <div className="qk-cloud-b" style={css('position:absolute; bottom:-80px; right:-80px; width:520px; opacity:0.5;')}>
-          <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
-            <g fill="#FFFFFF">
-              <ellipse cx="100" cy="160" rx="100" ry="60" /><ellipse cx="220" cy="130" rx="120" ry="90" />
-              <ellipse cx="350" cy="130" rx="110" ry="85" /><ellipse cx="460" cy="160" rx="100" ry="70" />
-            </g>
-          </svg>
-        </div>
-        <div data-reveal style={css('max-width:1300px; margin:0 auto; position:relative;')}>
-          <div style={css('font-family:var(--qk-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.7; margin-bottom:40px;')}>Index — 004 / Manifesto</div>
-          <p className="qk-d-pink" style={css('font-family:var(--qk-display); line-height:0.96; letter-spacing:-0.04em; margin:0; text-transform:uppercase;')}>
-            We don't chase <span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; text-transform:lowercase;')}>trends.</span><br />
-            We build the brands<br />that quietly <span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; text-transform:lowercase;')}>become them.</span>
-          </p>
-          <div style={css('display:flex; align-items:center; gap:18px; margin-top:72px; font-family:var(--qk-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.85;')}>
-            <span style={css('display:inline-block; width:36px; height:1px; background:#fff;')}></span>
-            Lirim Krasniqi · Co-founder, Qikas
-          </div>
-        </div>
-      </section>
-
-      {/* ============== SERVICES ============== */}
+      {/* ============== SELECTED WORK — scroll story ============== */}
+      <WorkStory />
+    {/* ============== SERVICES ============== */}
       <section id="services" style={css('padding:160px var(--qk-gutter);')}>
         <div data-reveal className="qk-grid-12" style={css('display:grid; grid-template-columns:1fr 2fr; gap:80px; align-items:end; margin-bottom:80px;')}>
           <div style={css('font-family:var(--qk-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--qk-pink);')}>Index — 005 / Services</div>
@@ -353,7 +266,28 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+      {/* ============== MANIFESTO QUOTE ON PINK ============== */}
+      <section id="studio" style={css('padding:180px var(--qk-gutter); background:var(--qk-pink); color:#fff; border-radius:64px; margin-top:-32px; position:relative; overflow:hidden;')}>
+        <div className="qk-cloud-b" style={css('position:absolute; bottom:-80px; right:-80px; width:520px; opacity:0.5;')}>
+          <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#FFFFFF">
+              <ellipse cx="100" cy="160" rx="100" ry="60" /><ellipse cx="220" cy="130" rx="120" ry="90" />
+              <ellipse cx="350" cy="130" rx="110" ry="85" /><ellipse cx="460" cy="160" rx="100" ry="70" />
+            </g>
+          </svg>
+        </div>
+        <div data-reveal style={css('max-width:1300px; margin:0 auto; position:relative;')}>
+          <div style={css('font-family:var(--qk-mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.7; margin-bottom:40px;')}>Index — 004 / Manifesto</div>
+          <p className="qk-d-pink" style={css('font-family:var(--qk-display); line-height:0.96; letter-spacing:-0.04em; margin:0; text-transform:uppercase;')}>
+            We don't chase <span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; text-transform:lowercase;')}>trends.</span><br />
+            We build the brands<br />that quietly <span style={css('font-family:var(--qk-serif); font-style:italic; font-weight:400; text-transform:lowercase;')}>become them.</span>
+          </p>
+          <div style={css('display:flex; align-items:center; gap:18px; margin-top:72px; font-family:var(--qk-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.85;')}>
+            <span style={css('display:inline-block; width:36px; height:1px; background:#fff;')}></span>
+            Anila Hajdari · Co-founder, Qikas
+          </div>
+        </div>
+      </section>
       {/* ============== INSIDE THE HOUSE ============== */}
       <section style={css('padding:140px var(--qk-gutter); background:var(--qk-white); border-radius:64px 64px 0 0;')}>
         <div data-reveal className="qk-grid-2" style={css('display:grid; grid-template-columns:1fr 1fr; gap:96px; align-items:center; margin-bottom:96px;')}>

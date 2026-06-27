@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FFFFFF; }
+    ::selection { background: #D4014A; color: #FFFFFF; }
+    [data-reveal] { transition: opacity 1.1s cubic-bezier(.2,.7,.2,1), transform 1.1s cubic-bezier(.2,.7,.2,1); }
+    [data-reveal].qk-hidden { opacity: 0; transform: translateY(36px); }
+    .qk-hover-grow { transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
+    .qk-card:hover .qk-hover-grow { transform: scale(1.03); }
+    .qk-cta { transition: background-color .4s ease, color .4s ease, border-color .4s ease; }
+    .qk-cta-light:hover { background: #D4014A !important; color: #FFFFFF !important; border-color: #D4014A !important; }
+    .qk-cta-dark:hover { background: #D4014A !important; border-color: #D4014A !important; }
+    .qk-link-underline { position: relative; display: inline-block; }
+    .qk-link-underline::after { content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background: #D4014A; transform-origin: left center; transform: scaleX(0); transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+    a:hover .qk-link-underline::after { transform: scaleX(1); }
+    @keyframes qk-drift-a { 0%,100% { transform: translate(0,0); } 50% { transform: translate(28px, -14px); } }
+    @keyframes qk-drift-b { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-22px, 12px); } }
+    @keyframes qk-drift-c { 0%,100% { transform: translate(0,0); } 50% { transform: translate(18px, 18px); } }
+    @keyframes qk-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes qk-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes qk-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .qk-cloud-a { animation: qk-drift-a 14s ease-in-out infinite; }
+    .qk-cloud-b { animation: qk-drift-b 18s ease-in-out infinite; }
+    .qk-cloud-c { animation: qk-drift-c 22s ease-in-out infinite; }
+    .qk-spin { animation: qk-spin 22s linear infinite; }
+    .qk-bob { animation: qk-bob 5s ease-in-out infinite; }
+  </style>
+</helmet>
+
+<div style="background:#FFFFFF; color:#141414; font-family:'Geist', system-ui, -apple-system, sans-serif; font-weight:400; -webkit-font-smoothing:antialiased; overflow-x:hidden; min-width:1280px;">
+
+  <!-- ============== TOP BAR ============== -->
+  <header style="position:absolute; top:0; left:0; right:0; z-index:40; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:48px; padding:28px 56px;">
+    <a href="#top" style="display:flex; align-items:center; gap:12px; text-decoration:none; color:#141414;">
+      <img src="assets/qikas-logo.png" alt="Qikas" style="width:38px; height:42px; object-fit:contain; display:block;">
+      <span style="font-family:'Archivo Black', sans-serif; font-size:22px; letter-spacing:-0.02em; text-transform:lowercase;">qikas</span>
+    </a>
+    <nav style="display:flex; gap:8px; padding:8px; background:rgba(255,255,255,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-radius:999px; box-shadow:0 8px 30px -12px rgba(212,1,74,0.18);">
+      <a href="#work" style="padding:10px 20px; border-radius:999px; color:#141414; text-decoration:none; font-family:'Geist', sans-serif; font-size:13px; font-weight:500;">Work</a>
+      <a href="#studio" style="padding:10px 20px; border-radius:999px; color:#141414; text-decoration:none; font-family:'Geist', sans-serif; font-size:13px; font-weight:500;">Studio</a>
+      <a href="#services" style="padding:10px 20px; border-radius:999px; color:#141414; text-decoration:none; font-family:'Geist', sans-serif; font-size:13px; font-weight:500;">Services</a>
+      <a href="#journal" style="padding:10px 20px; border-radius:999px; color:#141414; text-decoration:none; font-family:'Geist', sans-serif; font-size:13px; font-weight:500;">Journal</a>
+    </nav>
+    <div style="justify-self:end;">
+      <a href="#contact" class="qk-cta qk-cta-dark" style="display:inline-flex; align-items:center; gap:10px; padding:13px 24px; border-radius:999px; background:#141414; color:#FFFFFF; text-decoration:none; font-family:'Geist', sans-serif; font-size:13px; font-weight:500;">
+        Start a project
+        <span style="display:inline-block; width:7px; height:7px; background:#D4014A; border-radius:50%;"></span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============== HERO — DREAMY CLOUDS ============== -->
+  <section id="top" style="position:relative; min-height:980px; padding:200px 56px 120px; overflow:hidden; background:radial-gradient(120% 80% at 50% 0%, #FFD9E6 0%, #FFE9F1 35%, #FFFFFF 80%);">
+
+    <!-- Soft cloud field, layered -->
+    <div style="position:absolute; inset:0; pointer-events:none;">
+      <!-- Big white cloud, back -->
+      <div class="qk-cloud-a" style="position:absolute; top:120px; left:-40px; width:520px; opacity:0.95;">
+        <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 30px 50px rgba(212,1,74,0.10));">
+          <g fill="#FFFFFF">
+            <ellipse cx="100" cy="160" rx="100" ry="60"/>
+            <ellipse cx="200" cy="120" rx="110" ry="80"/>
+            <ellipse cx="320" cy="110" rx="100" ry="75"/>
+            <ellipse cx="420" cy="150" rx="90" ry="60"/>
+            <ellipse cx="260" cy="190" rx="220" ry="40"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Pink cloud, right -->
+      <div class="qk-cloud-b" style="position:absolute; top:60px; right:-80px; width:560px; opacity:0.92;">
+        <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 30px 60px rgba(212,1,74,0.18));">
+          <g fill="#FFB7CE">
+            <ellipse cx="110" cy="170" rx="100" ry="65"/>
+            <ellipse cx="220" cy="130" rx="120" ry="90"/>
+            <ellipse cx="350" cy="120" rx="110" ry="85"/>
+            <ellipse cx="460" cy="160" rx="100" ry="70"/>
+            <ellipse cx="280" cy="200" rx="240" ry="45"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Small floating white cloud -->
+      <div class="qk-cloud-c" style="position:absolute; top:380px; left:32%; width:260px; opacity:0.9;">
+        <svg viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 20px 30px rgba(212,1,74,0.10));">
+          <g fill="#FFFFFF">
+            <ellipse cx="60" cy="80" rx="50" ry="35"/>
+            <ellipse cx="120" cy="60" rx="55" ry="42"/>
+            <ellipse cx="180" cy="65" rx="50" ry="40"/>
+            <ellipse cx="220" cy="85" rx="40" ry="30"/>
+            <ellipse cx="130" cy="100" rx="110" ry="22"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Pale pink cloud, bottom-left -->
+      <div class="qk-cloud-a" style="position:absolute; bottom:80px; left:8%; width:340px; opacity:0.8;">
+        <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 20px 30px rgba(212,1,74,0.10));">
+          <g fill="#FFE0EB">
+            <ellipse cx="80" cy="100" rx="70" ry="48"/>
+            <ellipse cx="160" cy="80" rx="78" ry="55"/>
+            <ellipse cx="240" cy="90" rx="70" ry="52"/>
+            <ellipse cx="170" cy="120" rx="150" ry="28"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Hero content -->
+    <div style="position:relative; max-width:1400px; margin:0 auto; text-align:center;">
+
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A; margin-bottom:40px; display:inline-flex; align-items:center; gap:12px; padding:10px 22px; border-radius:999px; background:rgba(255,255,255,0.7); backdrop-filter:blur(10px); box-shadow:0 4px 20px -8px rgba(212,1,74,0.2);">
+        <span style="display:inline-block; width:8px; height:8px; background:#D4014A; border-radius:50%;"></span>
+        Qikas® Creative House · Prishtina, Kosovo
+        <span style="opacity:0.5; color:#141414;">— est. MMXIX</span>
+      </div>
+
+      <h1 style="font-family:'Archivo Black', sans-serif; font-size:260px; line-height:0.86; letter-spacing:-0.05em; margin:0; color:#141414; text-transform:uppercase;">
+        We Make<br>It <span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; letter-spacing:-0.02em; text-transform:lowercase;">pop.</span>
+      </h1>
+
+      <p style="font-family:'Geist', sans-serif; font-size:20px; line-height:1.5; max-width:560px; margin:48px auto 0; color:#3A3633;">
+        An independent studio for brands with a point of view — built on identity, image, social, and the rooms where culture happens.
+      </p>
+
+      <div style="display:flex; gap:14px; justify-content:center; margin-top:40px;">
+        <a href="#work" class="qk-cta qk-cta-dark" style="display:inline-flex; align-items:center; gap:10px; padding:16px 30px; border-radius:999px; background:#141414; color:#FFFFFF; text-decoration:none; font-family:'Geist', sans-serif; font-size:14px; font-weight:500;">
+          See selected work →
+        </a>
+        <a href="#contact" class="qk-cta qk-cta-light" style="display:inline-flex; align-items:center; gap:10px; padding:16px 30px; border-radius:999px; background:#FFFFFF; color:#141414; text-decoration:none; font-family:'Geist', sans-serif; font-size:14px; font-weight:500; border:1.5px solid #141414;">
+          Say hello
+        </a>
+      </div>
+
+      <!-- Floating round images / sticker around the title -->
+      <div class="qk-bob" style="position:absolute; left:-20px; top:120px; transform-origin:center;">
+        <div class="qk-card" style="width:170px; height:170px; border-radius:50%; overflow:hidden; box-shadow:0 20px 40px -16px rgba(212,1,74,0.30); border:4px solid #FFFFFF; transform:rotate(-6deg);">
+          <div class="qk-hover-grow" style="width:100%; height:100%;">
+            <image-slot id="hero-orbit-1" style="width:100%; height:100%; display:block;" shape="circle" placeholder="Editorial portrait"></image-slot>
+          </div>
+        </div>
+      </div>
+
+      <div class="qk-bob" style="position:absolute; right:0; top:200px; animation-delay:-2.5s;">
+        <div class="qk-card" style="width:200px; height:240px; border-radius:120px; overflow:hidden; box-shadow:0 24px 50px -18px rgba(212,1,74,0.32); border:4px solid #FFFFFF; transform:rotate(8deg);">
+          <div class="qk-hover-grow" style="width:100%; height:100%;">
+            <image-slot id="hero-orbit-2" style="width:100%; height:100%; display:block;" shape="pill" placeholder="Studio still"></image-slot>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rotating Q sticker -->
+      <div class="qk-spin" style="position:absolute; left:50%; bottom:-40px; transform:translateX(-50%); width:120px; height:120px;">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+          <defs>
+            <path id="qk-circle-hero" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/>
+          </defs>
+          <circle cx="100" cy="100" r="94" fill="#D4014A"/>
+          <text font-family="'JetBrains Mono', monospace" font-size="14" letter-spacing="4" font-weight="700" fill="#FFFFFF">
+            <textPath href="#qk-circle-hero">SCROLL • POP • SCROLL • POP • SCROLL • POP •  </textPath>
+          </text>
+          <text x="100" y="116" text-anchor="middle" font-family="'Instrument Serif', serif" font-style="italic" font-size="68" fill="#FFFFFF">q</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MARQUEE — soft pink ============== -->
+  <section style="background:#FFEAF1; padding:32px 0; overflow:hidden; border-radius:0;">
+    <div style="display:flex; gap:48px; white-space:nowrap; animation:qk-marquee 40s linear infinite; width:max-content; font-family:'Archivo Black', sans-serif; font-size:72px; line-height:1; letter-spacing:-0.035em; text-transform:uppercase; color:#141414;">
+      <span>Branding</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">socials</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span>Events</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">influence</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span>Campaigns</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">content</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span>Branding</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">socials</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span>Events</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">influence</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span>Campaigns</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">content</span><span style="color:#D4014A; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">✿</span>
+    </div>
+  </section>
+
+  <!-- ============== INTRO / PULL ============== -->
+  <section style="padding:140px 56px;">
+    <div data-reveal style="display:grid; grid-template-columns:1fr 2.4fr; gap:80px; align-items:start;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A;">Index — 001<br><span style="color:#8A857F;">Manifesto</span></div>
+      <p style="font-family:'Archivo Black', sans-serif; font-size:72px; line-height:1.02; letter-spacing:-0.03em; margin:0; color:#141414; text-transform:uppercase;">
+        We build brand worlds<br>you can <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">walk into</span> — through identity, image, social, and the rooms where culture happens.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== PINTEREST MASONRY ============== -->
+  <section id="journal" style="padding:0 56px 140px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:64px;">
+      <div data-reveal>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A; margin-bottom:20px;">Index — 002 / From the studio</div>
+        <h2 style="font-family:'Archivo Black', sans-serif; font-size:128px; line-height:0.9; letter-spacing:-0.04em; margin:0; color:#141414; text-transform:uppercase;">
+          A visual<br><span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">diary.</span>
+        </h2>
+      </div>
+      <a href="#" data-reveal style="text-decoration:none; color:#141414; font-family:'Geist', sans-serif; font-size:14px; font-weight:500; padding:14px 26px; border-radius:999px; border:1.5px solid #141414;" class="qk-cta qk-cta-light">
+        View the archive →
+      </a>
+    </div>
+
+    <div data-reveal style="column-count:3; column-gap:28px;">
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-01" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Editorial portrait — soft light"></image-slot></div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:200px 32px 200px 32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-02" style="width:100%; aspect-ratio:1/1; display:block;" shape="rect" placeholder="Still life — product detail"></image-slot></div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-03" style="width:100%; aspect-ratio:3/4; display:block;" shape="rect" placeholder="Architectural / interior"></image-slot></div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-04" style="width:100%; aspect-ratio:5/4; display:block;" shape="rect" placeholder="Behind-the-scenes — set"></image-slot></div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:32px 32px 200px 32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-05" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Fashion editorial"></image-slot></div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18); background:#D4014A;">
+        <div style="width:100%; aspect-ratio:1/1; display:grid; place-items:center; padding:32px; box-sizing:border-box; text-align:center;">
+          <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:64px; line-height:1.05; color:#FFFFFF; letter-spacing:-0.02em;">"We do loud things, quietly well."</div>
+        </div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:200px 32px 32px 32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-07" style="width:100%; aspect-ratio:3/4; display:block;" shape="rect" placeholder="Night / event photography"></image-slot></div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-08" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Studio still — flowers / texture"></image-slot></div>
+      </div>
+      <div class="qk-card" style="break-inside:avoid; margin:0 0 28px; border-radius:32px 200px 32px 32px; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);">
+        <div class="qk-hover-grow"><image-slot id="ms-09" style="width:100%; aspect-ratio:1/1; display:block;" shape="rect" placeholder="Editorial — wide landscape"></image-slot></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SELECTED WORK ============== -->
+  <section id="work" style="padding:140px 56px; background:#FFEAF1; border-radius:64px 64px 0 0;">
+    <div data-reveal style="display:grid; grid-template-columns:1fr 2fr; gap:80px; align-items:end; margin-bottom:96px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A;">Index — 003 / Selected work</div>
+      <h2 style="font-family:'Archivo Black', sans-serif; font-size:128px; line-height:0.9; letter-spacing:-0.04em; margin:0; color:#141414; text-transform:uppercase;">Recent<br><span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">chapters.</span></h2>
+    </div>
+
+    <!-- Case 1 -->
+    <article data-reveal style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:80px; align-items:center; margin-bottom:140px;">
+      <div class="qk-card" style="overflow:hidden; border-radius:48px; box-shadow:0 30px 70px -30px rgba(212,1,74,0.30);">
+        <div class="qk-hover-grow"><image-slot id="case-01" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Sunny Hill — hero image"></image-slot></div>
+      </div>
+      <div>
+        <div style="display:inline-block; padding:8px 18px; border-radius:999px; background:#FFFFFF; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#D4014A; margin-bottom:28px;">01 — Festival branding · 2025</div>
+        <h3 style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:0.92; letter-spacing:-0.04em; margin:0 0 28px; text-transform:uppercase;">Sunny Hill<br><span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">after hours.</span></h3>
+        <p style="font-family:'Geist', sans-serif; font-size:17px; line-height:1.6; color:#3A3633; margin:0 0 40px; max-width:480px;">
+          A full identity refresh for the Balkans' loudest summer week — visual system, content engine, on-ground signage, and the after-party that everyone remembered.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;">
+          <div style="padding:18px 26px; border-radius:999px; background:#FFFFFF; box-shadow:0 8px 20px -10px rgba(212,1,74,0.15);">
+            <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A; line-height:1;">+312%</div>
+            <div style="font-family:'Geist', sans-serif; font-size:11px; color:#8A857F; letter-spacing:0.04em; margin-top:4px;">social reach</div>
+          </div>
+          <div style="padding:18px 26px; border-radius:999px; background:#FFFFFF; box-shadow:0 8px 20px -10px rgba(212,1,74,0.15);">
+            <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A; line-height:1;">48k</div>
+            <div style="font-family:'Geist', sans-serif; font-size:11px; color:#8A857F; letter-spacing:0.04em; margin-top:4px;">tickets sold</div>
+          </div>
+          <div style="padding:18px 26px; border-radius:999px; background:#FFFFFF; box-shadow:0 8px 20px -10px rgba(212,1,74,0.15);">
+            <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A; line-height:1;">12 mo</div>
+            <div style="font-family:'Geist', sans-serif; font-size:11px; color:#8A857F; letter-spacing:0.04em; margin-top:4px;">partnership</div>
+          </div>
+        </div>
+        <a href="#" style="display:inline-block; text-decoration:none; color:#141414; font-family:'Geist', sans-serif; font-size:14px; font-weight:500;">
+          <span class="qk-link-underline">Read the case →</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Case 2 -->
+    <article data-reveal style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:80px; align-items:center; margin-bottom:140px;">
+      <div>
+        <div style="display:inline-block; padding:8px 18px; border-radius:999px; background:#FFFFFF; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#D4014A; margin-bottom:28px;">02 — Packaging & identity · 2024</div>
+        <h3 style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:0.92; letter-spacing:-0.04em; margin:0 0 28px; text-transform:uppercase;">Peja Soda<br><span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">reissued.</span></h3>
+        <p style="font-family:'Geist', sans-serif; font-size:17px; line-height:1.6; color:#3A3633; margin:0 0 40px; max-width:460px;">
+          A heritage soda turned cult object — modern bottle architecture, a new visual lexicon for limited drops, and a launch film that traveled further than any banner ad.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;">
+          <div style="padding:18px 26px; border-radius:999px; background:#FFFFFF; box-shadow:0 8px 20px -10px rgba(212,1,74,0.15);">
+            <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A; line-height:1;">7 SKUs</div>
+            <div style="font-family:'Geist', sans-serif; font-size:11px; color:#8A857F; letter-spacing:0.04em; margin-top:4px;">new range</div>
+          </div>
+          <div style="padding:18px 26px; border-radius:999px; background:#FFFFFF; box-shadow:0 8px 20px -10px rgba(212,1,74,0.15);">
+            <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A; line-height:1;">Sold out</div>
+            <div style="font-family:'Geist', sans-serif; font-size:11px; color:#8A857F; letter-spacing:0.04em; margin-top:4px;">limited run</div>
+          </div>
+          <div style="padding:18px 26px; border-radius:999px; background:#FFFFFF; box-shadow:0 8px 20px -10px rgba(212,1,74,0.15);">
+            <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A; line-height:1;">3 markets</div>
+            <div style="font-family:'Geist', sans-serif; font-size:11px; color:#8A857F; letter-spacing:0.04em; margin-top:4px;">distribution</div>
+          </div>
+        </div>
+        <a href="#" style="display:inline-block; text-decoration:none; color:#141414; font-family:'Geist', sans-serif; font-size:14px; font-weight:500;">
+          <span class="qk-link-underline">Read the case →</span>
+        </a>
+      </div>
+      <div class="qk-card" style="overflow:hidden; border-radius:48px; box-shadow:0 30px 70px -30px rgba(212,1,74,0.30);">
+        <div class="qk-hover-grow"><image-slot id="case-02" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Peja Soda — bottle still"></image-slot></div>
+      </div>
+    </article>
+
+    <!-- Case 3 -->
+    <article data-reveal style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:80px; align-items:center;">
+      <div class="qk-card" style="overflow:hidden; border-radius:48px; box-shadow:0 30px 70px -30px rgba(212,1,74,0.30);">
+        <div class="qk-hover-grow"><image-slot id="case-03" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Hima Records — sleeve detail"></image-slot></div>
+      </div>
+      <div>
+        <div style="display:inline-block; padding:8px 18px; border-radius:999px; background:#FFFFFF; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#D4014A; margin-bottom:28px;">03 — Label identity · 2024</div>
+        <h3 style="font-family:'Archivo Black', sans-serif; font-size:88px; line-height:0.92; letter-spacing:-0.04em; margin:0 0 28px; text-transform:uppercase;">Hima Records,<br><span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">quietly loud.</span></h3>
+        <p style="font-family:'Geist', sans-serif; font-size:17px; line-height:1.6; color:#3A3633; margin:0 0 40px; max-width:480px;">
+          A new identity for a young record label rooted in Balkan electronic music — sleeve system, motion language, and a release rhythm built to scale across artists.
+        </p>
+        <a href="#" style="display:inline-block; text-decoration:none; color:#141414; font-family:'Geist', sans-serif; font-size:14px; font-weight:500;">
+          <span class="qk-link-underline">Read the case →</span>
+        </a>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============== MANIFESTO QUOTE ON PINK ============== -->
+  <section id="studio" style="padding:180px 56px; background:#D4014A; color:#FFFFFF; border-radius:64px 64px 64px 64px; margin-top:-32px; position:relative; overflow:hidden;">
+    <!-- decorative cloud bottom -->
+    <div style="position:absolute; bottom:-80px; right:-80px; width:520px; opacity:0.6;" class="qk-cloud-b">
+      <svg viewBox="0 0 520 240" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#FFB7CE">
+          <ellipse cx="100" cy="160" rx="100" ry="60"/>
+          <ellipse cx="220" cy="130" rx="120" ry="90"/>
+          <ellipse cx="350" cy="130" rx="110" ry="85"/>
+          <ellipse cx="460" cy="160" rx="100" ry="70"/>
+        </g>
+      </svg>
+    </div>
+
+    <div data-reveal style="max-width:1300px; margin:0 auto; position:relative;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; opacity:0.7; margin-bottom:40px;">Index — 004 / Manifesto</div>
+      <p style="font-family:'Archivo Black', sans-serif; font-size:144px; line-height:0.96; letter-spacing:-0.04em; margin:0; text-transform:uppercase;">
+        We don't chase <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; text-transform:lowercase;">trends.</span><br>
+        We build the brands<br>that quietly <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; text-transform:lowercase;">become them.</span>
+      </p>
+      <div style="display:flex; align-items:center; gap:18px; margin-top:72px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.85;">
+        <span style="display:inline-block; width:36px; height:1px; background:#FFFFFF;"></span>
+        Lirim Krasniqi · Co-founder, Qikas
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SERVICES ============== -->
+  <section id="services" style="padding:160px 56px;">
+    <div data-reveal style="display:grid; grid-template-columns:1fr 2fr; gap:80px; align-items:end; margin-bottom:80px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A;">Index — 005 / Services</div>
+      <h2 style="font-family:'Archivo Black', sans-serif; font-size:128px; line-height:0.9; letter-spacing:-0.04em; margin:0; text-transform:uppercase;">What we <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">do.</span></h2>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:18px;">
+      <a href="#" data-reveal class="qk-card" style="display:grid; grid-template-columns:80px 1.3fr 1.8fr 1fr 60px; gap:48px; align-items:center; padding:32px 40px; background:#FAFAF7; border-radius:48px; text-decoration:none; color:#141414; transition:background .4s ease;" onmouseover="this.style.background='#FFEAF1'" onmouseout="this.style.background='#FAFAF7'">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A;">01</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:44px; line-height:1.0; letter-spacing:-0.03em; text-transform:uppercase;">Brand<br>Identity</div>
+        <div style="font-family:'Geist', sans-serif; font-size:15px; line-height:1.55; color:#3A3633; max-width:460px;">Naming, logos, typography, color, motion — and a system your team can actually live inside.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8A857F;">04 deliverables</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:42px; text-align:right; color:#D4014A;">→</div>
+      </a>
+      <a href="#" data-reveal class="qk-card" style="display:grid; grid-template-columns:80px 1.3fr 1.8fr 1fr 60px; gap:48px; align-items:center; padding:32px 40px; background:#FAFAF7; border-radius:48px; text-decoration:none; color:#141414; transition:background .4s ease;" onmouseover="this.style.background='#FFEAF1'" onmouseout="this.style.background='#FAFAF7'">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A;">02</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:44px; line-height:1.0; letter-spacing:-0.03em; text-transform:uppercase;">Image &<br>Art Dir.</div>
+        <div style="font-family:'Geist', sans-serif; font-size:15px; line-height:1.55; color:#3A3633; max-width:460px;">Photography, film, lookbooks, campaign imagery — produced in-studio, on location, and on time.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8A857F;">in-house production</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:42px; text-align:right; color:#D4014A;">→</div>
+      </a>
+      <a href="#" data-reveal class="qk-card" style="display:grid; grid-template-columns:80px 1.3fr 1.8fr 1fr 60px; gap:48px; align-items:center; padding:32px 40px; background:#FAFAF7; border-radius:48px; text-decoration:none; color:#141414; transition:background .4s ease;" onmouseover="this.style.background='#FFEAF1'" onmouseout="this.style.background='#FAFAF7'">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A;">03</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:44px; line-height:1.0; letter-spacing:-0.03em; text-transform:uppercase;">Social &<br>Content</div>
+        <div style="font-family:'Geist', sans-serif; font-size:15px; line-height:1.55; color:#3A3633; max-width:460px;">Always-on content engines, editorial calendars, and the considered feed your audience comes back to.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8A857F;">monthly retainers</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:42px; text-align:right; color:#D4014A;">→</div>
+      </a>
+      <a href="#" data-reveal class="qk-card" style="display:grid; grid-template-columns:80px 1.3fr 1.8fr 1fr 60px; gap:48px; align-items:center; padding:32px 40px; background:#FAFAF7; border-radius:48px; text-decoration:none; color:#141414; transition:background .4s ease;" onmouseover="this.style.background='#FFEAF1'" onmouseout="this.style.background='#FAFAF7'">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A;">04</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:44px; line-height:1.0; letter-spacing:-0.03em; text-transform:uppercase;">Influence<br>& Talent</div>
+        <div style="font-family:'Geist', sans-serif; font-size:15px; line-height:1.55; color:#3A3633; max-width:460px;">Curated casting and campaign production across the region and the diaspora — the right faces, the right rooms.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8A857F;">200+ creators</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:42px; text-align:right; color:#D4014A;">→</div>
+      </a>
+      <a href="#" data-reveal class="qk-card" style="display:grid; grid-template-columns:80px 1.3fr 1.8fr 1fr 60px; gap:48px; align-items:center; padding:32px 40px; background:#FAFAF7; border-radius:48px; text-decoration:none; color:#141414; transition:background .4s ease;" onmouseover="this.style.background='#FFEAF1'" onmouseout="this.style.background='#FAFAF7'">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:32px; letter-spacing:-0.02em; color:#D4014A;">05</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:44px; line-height:1.0; letter-spacing:-0.03em; text-transform:uppercase;">Events &<br>Activations</div>
+        <div style="font-family:'Geist', sans-serif; font-size:15px; line-height:1.55; color:#3A3633; max-width:460px;">Launches, parties, brand activations — designed end to end, from room to run-of-show to morning-after content.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#8A857F;">end to end</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:42px; text-align:right; color:#D4014A;">→</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============== STUDIO / INSIDE ============== -->
+  <section style="padding:140px 56px; background:#FFEAF1; border-radius:64px 64px 0 0;">
+    <div data-reveal style="display:grid; grid-template-columns:1fr 1fr; gap:96px; align-items:center; margin-bottom:96px;">
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A; margin-bottom:24px;">Index — 006 / Inside the house</div>
+        <h2 style="font-family:'Archivo Black', sans-serif; font-size:104px; line-height:0.92; letter-spacing:-0.04em; margin:0 0 40px; text-transform:uppercase;">A small<br>studio,<br><span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">made by hand.</span></h2>
+        <p style="font-family:'Geist', sans-serif; font-size:17px; line-height:1.6; color:#3A3633; margin:0 0 24px; max-width:520px;">
+          Eight people — designers, producers, photographers, and a strategist who keeps everyone honest. Based in Prishtina, working across Europe.
+        </p>
+        <p style="font-family:'Geist', sans-serif; font-size:17px; line-height:1.6; color:#3A3633; margin:0 0 48px; max-width:520px;">
+          One team from kickoff to launch. Your project is not handed off three times before it ships.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#" class="qk-cta qk-cta-dark" style="display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border-radius:999px; background:#141414; color:#FFFFFF; text-decoration:none; font-family:'Geist', sans-serif; font-size:13px; font-weight:500;">
+            Meet the team →
+          </a>
+          <a href="#" class="qk-cta qk-cta-light" style="display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border-radius:999px; border:1.5px solid #141414; color:#141414; text-decoration:none; font-family:'Geist', sans-serif; font-size:13px; font-weight:500; background:transparent;">
+            We're hiring · 3 roles
+          </a>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div class="qk-card" style="overflow:hidden; border-radius:32px; transform:translateY(20px); box-shadow:0 20px 50px -25px rgba(212,1,74,0.25);"><div class="qk-hover-grow"><image-slot id="team-01" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Team portrait"></image-slot></div></div>
+        <div class="qk-card" style="overflow:hidden; border-radius:200px 32px 32px 32px; box-shadow:0 20px 50px -25px rgba(212,1,74,0.25);"><div class="qk-hover-grow"><image-slot id="team-02" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Studio interior"></image-slot></div></div>
+        <div class="qk-card" style="overflow:hidden; border-radius:32px 32px 200px 32px; box-shadow:0 20px 50px -25px rgba(212,1,74,0.25);"><div class="qk-hover-grow"><image-slot id="team-03" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="At work — detail"></image-slot></div></div>
+        <div class="qk-card" style="overflow:hidden; border-radius:32px; transform:translateY(20px); box-shadow:0 20px 50px -25px rgba(212,1,74,0.25);"><div class="qk-hover-grow"><image-slot id="team-04" style="width:100%; aspect-ratio:4/5; display:block;" shape="rect" placeholder="Team portrait"></image-slot></div></div>
+      </div>
+    </div>
+
+    <!-- Numbers row -->
+    <div data-reveal style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+      <div style="padding:48px 32px; background:#FFFFFF; border-radius:48px; text-align:center; box-shadow:0 12px 30px -18px rgba(212,1,74,0.18);">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.05em; color:#141414;">06<span style="color:#D4014A;">.</span></div>
+        <div style="font-family:'Geist', sans-serif; font-size:13px; letter-spacing:0.04em; margin-top:12px; color:#8A857F;">years in the room</div>
+      </div>
+      <div style="padding:48px 32px; background:#FFFFFF; border-radius:48px; text-align:center; box-shadow:0 12px 30px -18px rgba(212,1,74,0.18);">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.05em; color:#141414;">48<span style="color:#D4014A;">+</span></div>
+        <div style="font-family:'Geist', sans-serif; font-size:13px; letter-spacing:0.04em; margin-top:12px; color:#8A857F;">brands made loud</div>
+      </div>
+      <div style="padding:48px 32px; background:#FFFFFF; border-radius:48px; text-align:center; box-shadow:0 12px 30px -18px rgba(212,1,74,0.18);">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.05em; color:#141414;">22<span style="color:#D4014A;">,</span></div>
+        <div style="font-family:'Geist', sans-serif; font-size:13px; letter-spacing:0.04em; margin-top:12px; color:#8A857F;">events produced</div>
+      </div>
+      <div style="padding:48px 32px; background:#FFFFFF; border-radius:48px; text-align:center; box-shadow:0 12px 30px -18px rgba(212,1,74,0.18);">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.05em; color:#D4014A;">∞</div>
+        <div style="font-family:'Geist', sans-serif; font-size:13px; letter-spacing:0.04em; margin-top:12px; color:#8A857F;">coffees pulled</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CLIENTS ============== -->
+  <section style="padding:140px 56px;">
+    <div data-reveal style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:48px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A;">Index — 007 / In good company</div>
+      <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:22px; color:#3A3633;">a few of the brands we work with</div>
+    </div>
+    <div data-reveal style="display:flex; flex-wrap:wrap; gap:14px;">
+      <div style="padding:20px 36px; border-radius:999px; background:#FAFAF7; font-family:'Archivo Black', sans-serif; font-size:30px; letter-spacing:-0.02em; color:#141414; text-transform:uppercase;">Sunny Hill</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FFEAF1; font-family:'Instrument Serif', serif; font-style:italic; font-size:34px; letter-spacing:-0.01em; color:#D4014A;">Peja</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FAFAF7; font-family:'Archivo Black', sans-serif; font-size:30px; letter-spacing:-0.02em; color:#141414; text-transform:uppercase;">Hima Records</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FFEAF1; font-family:'Instrument Serif', serif; font-style:italic; font-size:34px; letter-spacing:-0.01em; color:#D4014A;">Solaborate</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FAFAF7; font-family:'Archivo Black', sans-serif; font-size:30px; letter-spacing:-0.02em; color:#141414; text-transform:uppercase;">Beer Fest</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FFEAF1; font-family:'Instrument Serif', serif; font-style:italic; font-size:34px; letter-spacing:-0.01em; color:#D4014A;">European Heat</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FAFAF7; font-family:'Archivo Black', sans-serif; font-size:30px; letter-spacing:-0.02em; color:#141414; text-transform:uppercase;">Hera</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FFEAF1; font-family:'Instrument Serif', serif; font-style:italic; font-size:34px; letter-spacing:-0.01em; color:#D4014A;">Termokiss</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FAFAF7; font-family:'Archivo Black', sans-serif; font-size:30px; letter-spacing:-0.02em; color:#141414; text-transform:uppercase;">Bota</div>
+      <div style="padding:20px 36px; border-radius:999px; background:#FFEAF1; font-family:'Instrument Serif', serif; font-style:italic; font-size:34px; letter-spacing:-0.01em; color:#D4014A;">Anibar</div>
+    </div>
+  </section>
+
+  <!-- ============== BIG CTA WITH CLOUDS ============== -->
+  <section id="contact" style="position:relative; padding:180px 56px 140px; background:radial-gradient(120% 80% at 50% 100%, #FFD9E6 0%, #FFE9F1 35%, #FFFFFF 80%); border-radius:64px 64px 0 0; overflow:hidden;">
+
+    <!-- Decorative clouds in CTA -->
+    <div class="qk-cloud-a" style="position:absolute; top:60px; left:-40px; width:380px; opacity:0.85;">
+      <svg viewBox="0 0 380 180" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 20px 40px rgba(212,1,74,0.12));">
+        <g fill="#FFFFFF">
+          <ellipse cx="90" cy="120" rx="80" ry="50"/>
+          <ellipse cx="180" cy="90" rx="90" ry="65"/>
+          <ellipse cx="280" cy="100" rx="85" ry="60"/>
+          <ellipse cx="200" cy="140" rx="170" ry="32"/>
+        </g>
+      </svg>
+    </div>
+    <div class="qk-cloud-b" style="position:absolute; top:100px; right:-60px; width:420px; opacity:0.88;">
+      <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 24px 50px rgba(212,1,74,0.18));">
+        <g fill="#FFB7CE">
+          <ellipse cx="100" cy="130" rx="90" ry="55"/>
+          <ellipse cx="200" cy="100" rx="100" ry="75"/>
+          <ellipse cx="310" cy="110" rx="90" ry="65"/>
+          <ellipse cx="210" cy="155" rx="190" ry="32"/>
+        </g>
+      </svg>
+    </div>
+
+    <div data-reveal style="position:relative; text-align:center; max-width:1400px; margin:0 auto;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#D4014A; margin-bottom:40px;">Index — 008 / Let's talk</div>
+      <h2 style="font-family:'Archivo Black', sans-serif; font-size:220px; line-height:0.86; letter-spacing:-0.05em; margin:0 0 56px; text-transform:uppercase;">
+        Let's make<br>something <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">together.</span>
+      </h2>
+      <a href="mailto:hello@qikas.house" style="display:inline-flex; align-items:center; gap:14px; padding:22px 48px; border-radius:999px; background:#141414; color:#FFFFFF; text-decoration:none; font-family:'Archivo Black', sans-serif; font-size:36px; letter-spacing:-0.02em; box-shadow:0 30px 60px -25px rgba(212,1,74,0.4); transition:background .4s ease;" onmouseover="this.style.background='#D4014A'" onmouseout="this.style.background='#141414'">
+        hello@qikas.house
+        <span style="display:inline-block; width:14px; height:14px; background:#D4014A; border-radius:50%;"></span>
+      </a>
+
+      <div style="display:inline-flex; gap:36px; margin-top:64px; padding:24px 40px; border-radius:999px; background:rgba(255,255,255,0.7); backdrop-filter:blur(10px); box-shadow:0 8px 30px -12px rgba(212,1,74,0.18); font-family:'Geist', sans-serif; font-size:13px;">
+        <div style="display:flex; align-items:center; gap:10px;"><span style="display:inline-block; width:8px; height:8px; background:#D4014A; border-radius:50%; box-shadow:0 0 0 4px rgba(212,1,74,0.2);"></span>Booking Q3 · 3 of 4 slots filled</div>
+        <div style="opacity:0.5;">·</div>
+        <div>join@qikas.house</div>
+        <div style="opacity:0.5;">·</div>
+        <div>Rr. Bedri Pejani 14, 10000 Prishtina</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer style="padding:64px 56px 36px; background:#141414; color:#FFFFFF;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:80px;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <img src="assets/qikas-logo.png" alt="Qikas" style="width:32px; height:36px; object-fit:contain; display:block;">
+        <div>
+          <div style="font-family:'Archivo Black', sans-serif; font-size:22px; letter-spacing:-0.02em; text-transform:lowercase;">qikas</div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55; margin-top:4px;">Prishtina · Kosovo · est. MMXIX</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:48px;">
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.5; margin-bottom:14px;">Studio</div>
+          <div style="display:flex; flex-direction:column; gap:8px; font-family:'Geist', sans-serif; font-size:14px;">
+            <a href="#work" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">Work</a>
+            <a href="#services" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">Services</a>
+            <a href="#studio" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">Inside</a>
+            <a href="#journal" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">Journal</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.5; margin-bottom:14px;">Elsewhere</div>
+          <div style="display:flex; flex-direction:column; gap:8px; font-family:'Geist', sans-serif; font-size:14px;">
+            <a href="#" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">Instagram</a>
+            <a href="#" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">LinkedIn</a>
+            <a href="#" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">Behance</a>
+            <a href="#" style="color:#FFFFFF; text-decoration:none; opacity:0.85;">TikTok</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Giant wordmark -->
+    <div style="font-family:'Archivo Black', sans-serif; font-size:340px; line-height:0.78; letter-spacing:-0.05em; margin-bottom:48px; text-transform:uppercase;">
+      Qikas<span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#D4014A; text-transform:lowercase;">.</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; padding-top:24px; border-top:1px solid rgba(255,255,255,0.15); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55;">
+      <div>© MMXXVI · Qikas Creative House sh.p.k.</div>
+      <div>Prishtina · 42.66°N 21.16°E</div>
+      <div>Made with care · last updated 06.2026</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (!('IntersectionObserver' in window)) return; // graceful fallback — content visible by default
+
+    const showAll = () => {
+      document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.remove('qk-hidden'));
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.remove('qk-hidden');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.05, rootMargin: '0px 0px -5% 0px' });
+
+    // Hide only what's truly below the fold. Use classList so React reconciliation
+    // doesn't wipe inline styles. Default state in the template is visible.
+    requestAnimationFrame(() => {
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top > vh) {
+          el.classList.add('qk-hidden');
+          io.observe(el);
+        }
+      });
+    });
+
+    // Safety: no matter what happens with scroll, observer, or reconciliation,
+    // everything is forced visible after 4s. Content > animation.
+    setTimeout(showAll, 4000);
+  }
+  renderVals() { return {}; }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Qikas Landing";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  var __m = null;
+  try { __m = (() => {
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  if (paperPage) {
+    return { kind: 'paper-doc', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    if (authoredPx(el, 'width')) break;
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  return { kind: 'single-canvas', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: authoredPx(el, 'width'), height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + f.width + 'px ' + f.height +
+        'px;margin:0}html,body,[data-om-frame-wrap]{padding:0!important;' +
+        'margin:0!important;background:none!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

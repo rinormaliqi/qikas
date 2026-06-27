@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @keyframes qk-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes qk-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes qk-blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+    @keyframes qk-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+    body { margin: 0; }
+  </style>
+</helmet>
+
+<div style="background:#FBEFE3; color:#241229; font-family:'Space Grotesk', system-ui, sans-serif; overflow:hidden; min-width:1280px;">
+
+  <!-- ============== GRAIN OVERLAY (whole page) ============== -->
+  <svg style="position:fixed; inset:0; width:100%; height:100%; pointer-events:none; mix-blend-mode:multiply; opacity:0.10; z-index:50;" aria-hidden="true">
+    <filter id="qk-noise"><feTurbulence type="fractalNoise" baseFrequency="1.8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.15  0 0 0 0 0.05  0 0 0 0 0.20  0 0 0 0.55 0"/></filter>
+    <rect width="100%" height="100%" filter="url(#qk-noise)"/>
+  </svg>
+
+  <!-- ============== TOP BAR ============== -->
+  <header style="position:relative; z-index:20; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:48px; padding:22px 48px; border-bottom:2px solid #241229;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div style="width:42px; height:42px; background:#FF2D8F; display:grid; place-items:center; border:2px solid #241229; box-shadow:4px 4px 0 #241229;">
+        <span style="font-family:'Instrument Serif', serif; font-style:italic; font-size:32px; line-height:1; color:#FBEFE3; transform:translate(1px,-1px);">q</span>
+      </div>
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#241229; line-height:1.2;">
+        Qikas®<br>
+        <span style="opacity:0.6;">Creative House</span>
+      </div>
+    </div>
+
+    <nav style="display:flex; gap:36px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;">
+      <a href="#work" style="color:#241229; text-decoration:none; display:flex; align-items:center; gap:6px;"><span style="display:inline-block; width:6px; height:6px; background:#FF2D8F; border-radius:50%;"></span>Work</a>
+      <a href="#studio" style="color:#241229; text-decoration:none;">Studio</a>
+      <a href="#services" style="color:#241229; text-decoration:none;">Services</a>
+      <a href="#journal" style="color:#241229; text-decoration:none;">Journal</a>
+      <a href="#contact" style="color:#241229; text-decoration:none;">Contact</a>
+    </nav>
+
+    <div style="display:flex; align-items:center; gap:18px; justify-content:flex-end;">
+      <span style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; color:#241229; opacity:0.7;">PRN ⇄ EU</span>
+      <a href="#contact" style="text-decoration:none; display:inline-flex; align-items:center; gap:10px; padding:12px 22px; border:2px solid #241229; border-radius:999px; background:#241229; color:#FBEFE3; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;">
+        Book a chat <span style="display:inline-block; width:8px; height:8px; background:#FF2D8F; border-radius:50%; animation:qk-blink 1.4s infinite;"></span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section style="position:relative; padding:56px 48px 80px;">
+    <!-- Top meta row -->
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#241229; padding-bottom:32px;">
+      <div style="display:flex; gap:32px;">
+        <span>[ 001 / Home ]</span>
+        <span style="opacity:0.6;">— Creative Studio</span>
+        <span style="opacity:0.6;">EST. MMXIX</span>
+      </div>
+      <div style="display:flex; gap:32px; align-items:center;">
+        <span>42° 39′ N · 21° 09′ E</span>
+        <span style="opacity:0.6;">Prishtina, Kosovo</span>
+      </div>
+    </div>
+
+    <!-- Hero composition -->
+    <div style="position:relative; display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:end;">
+      <!-- Left column: massive type -->
+      <div style="position:relative;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:10px;">
+          <span style="display:inline-block; width:28px; height:2px; background:#241229;"></span>
+          We're a creative house — based in PRN, working everywhere
+        </div>
+        <h1 style="font-family:'Archivo Black', sans-serif; font-size:220px; line-height:0.82; letter-spacing:-0.045em; color:#241229; margin:0; text-transform:uppercase;">
+          We<br>Make<br>It <span style="color:#FF2D8F; font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; letter-spacing:-0.02em;">Pop.</span>
+        </h1>
+      </div>
+
+      <!-- Right column: image collage + meta -->
+      <div style="position:relative; height:560px;">
+        <!-- Large rectangular placeholder image -->
+        <div style="position:absolute; top:0; right:0; width:78%; height:64%; background:#FF2D8F; border:2px solid #241229; box-shadow:8px 8px 0 #241229; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 400 300" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-stripe-1" patternUnits="userSpaceOnUse" width="14" height="14" patternTransform="rotate(45)">
+                <rect width="14" height="14" fill="#FF2D8F"/>
+                <line x1="0" y1="0" x2="0" y2="14" stroke="#241229" stroke-width="1.2" opacity="0.35"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#qk-stripe-1)"/>
+          </svg>
+          <div style="position:absolute; left:18px; bottom:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#FBEFE3;">[ image_01 — bubblegum.jpg ]</div>
+          <div style="position:absolute; right:18px; top:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#FBEFE3;">2.4 MB</div>
+        </div>
+
+        <!-- Small offset placeholder image -->
+        <div style="position:absolute; bottom:0; left:0; width:48%; height:46%; background:#241229; border:2px solid #241229; box-shadow:6px 6px 0 #FF2D8F; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 300 240" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-stripe-2" patternUnits="userSpaceOnUse" width="10" height="10">
+                <rect width="10" height="10" fill="#241229"/>
+                <circle cx="5" cy="5" r="1.2" fill="#FBEFE3" opacity="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="300" height="240" fill="url(#qk-stripe-2)"/>
+          </svg>
+          <div style="position:absolute; left:14px; bottom:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#FBEFE3;">[ image_02 — afterparty.jpg ]</div>
+        </div>
+
+        <!-- Rotating sticker -->
+        <div style="position:absolute; right:-10px; bottom:-30px; width:158px; height:158px; animation:qk-spin 14s linear infinite;">
+          <svg viewBox="0 0 200 200" width="100%" height="100%">
+            <defs>
+              <path id="qk-circle" d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"/>
+            </defs>
+            <circle cx="100" cy="100" r="92" fill="#FF2D8F" stroke="#241229" stroke-width="2"/>
+            <text font-family="'JetBrains Mono', monospace" font-size="14" letter-spacing="4" font-weight="700" fill="#241229">
+              <textPath href="#qk-circle">WE • MAKE • IT • POP • WE • MAKE • IT • POP •  </textPath>
+            </text>
+            <text x="100" y="108" text-anchor="middle" font-family="'Instrument Serif', serif" font-style="italic" font-size="56" fill="#241229">q</text>
+          </svg>
+        </div>
+
+        <!-- Meta block -->
+        <div style="position:absolute; left:52%; top:70%; width:38%; font-family:'Space Grotesk', sans-serif; font-size:14px; line-height:1.45; color:#241229;">
+          A creative house for brands that refuse to whisper. We do <span style="font-family:'Instrument Serif', serif; font-style:italic;">branding</span>, <span style="font-family:'Instrument Serif', serif; font-style:italic;">socials</span>, <span style="font-family:'Instrument Serif', serif; font-style:italic;">events</span> and the noise in-between.
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row: scroll cue + tagline -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:64px; padding-top:24px; border-top:2px solid #241229;">
+      <div style="display:flex; gap:48px; align-items:center;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; display:flex; align-items:center; gap:10px;">
+          <span style="display:inline-block; width:24px; height:24px; border:2px solid #241229; border-radius:50%; position:relative;">
+            <span style="position:absolute; left:50%; top:8px; width:2px; height:8px; background:#241229; transform:translateX(-50%); animation:qk-pulse 1.6s ease-in-out infinite;"></span>
+          </span>
+          Scroll for the loud part
+        </div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55;">07 Sections · 22 Projects · 1 Studio</div>
+      </div>
+      <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:22px; color:#241229;">
+        — loud brands · loud rooms · loud ideas.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MARQUEE ============== -->
+  <section style="background:#241229; border-top:2px solid #241229; border-bottom:2px solid #241229; padding:24px 0; overflow:hidden;">
+    <div style="display:flex; gap:40px; white-space:nowrap; animation:qk-marquee 32s linear infinite; width:max-content; font-family:'Archivo Black', sans-serif; font-size:68px; line-height:1; letter-spacing:-0.03em; text-transform:uppercase; color:#FBEFE3;">
+      <span>BRANDING</span><span style="color:#FF2D8F;">✺</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; color:#FF2D8F; font-weight:400;">socials</span><span style="color:#FF2D8F;">✺</span>
+      <span>EVENTS</span><span style="color:#FF2D8F;">✺</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; color:#FF2D8F; font-weight:400;">influence</span><span style="color:#FF2D8F;">✺</span>
+      <span>CAMPAIGNS</span><span style="color:#FF2D8F;">✺</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; color:#FF2D8F; font-weight:400;">content</span><span style="color:#FF2D8F;">✺</span>
+      <span>BRANDING</span><span style="color:#FF2D8F;">✺</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; color:#FF2D8F; font-weight:400;">socials</span><span style="color:#FF2D8F;">✺</span>
+      <span>EVENTS</span><span style="color:#FF2D8F;">✺</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; color:#FF2D8F; font-weight:400;">influence</span><span style="color:#FF2D8F;">✺</span>
+      <span>CAMPAIGNS</span><span style="color:#FF2D8F;">✺</span>
+      <span style="font-family:'Instrument Serif', serif; font-style:italic; color:#FF2D8F; font-weight:400;">content</span><span style="color:#FF2D8F;">✺</span>
+    </div>
+  </section>
+
+  <!-- ============== MANIFESTO ============== -->
+  <section id="studio" style="background:#FF2D8F; color:#241229; padding:120px 48px; position:relative; border-bottom:2px solid #241229;">
+    <div style="display:grid; grid-template-columns:0.7fr 2.3fr; gap:60px; align-items:start;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase;">
+        <div style="margin-bottom:18px;">[ 01 / Manifesto ]</div>
+        <div style="opacity:0.7; line-height:1.7; max-width:220px;">A note from the room where the loud ideas happen — pinned to the wall, slightly crooked.</div>
+      </div>
+      <div>
+        <p style="font-family:'Instrument Serif', serif; font-size:84px; line-height:1.02; margin:0 0 32px; letter-spacing:-0.02em; color:#241229;">
+          We're not <span style="font-style:italic;">an agency.</span><br>
+          We're a <span style="font-family:'Archivo Black', sans-serif; font-style:normal; text-transform:uppercase; font-size:78px;">creative house</span><br>
+          where ideas throw <span style="font-style:italic;">their best parties.</span>
+        </p>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; max-width:920px; font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.55;">
+          <div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:8px; padding-bottom:6px; border-bottom:1.5px solid #241229;">// what we are</div>
+            Half brand studio, half production house, full party — built in Prishtina, exported to the world.
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:8px; padding-bottom:6px; border-bottom:1.5px solid #241229;">// what we do</div>
+            Identity, social, influencer, events, employer branding — the whole noisy package or one loud piece of it.
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:8px; padding-bottom:6px; border-bottom:1.5px solid #241229;">// how we work</div>
+            Strategy on Monday, shoot on Thursday, posters at midnight, espresso every twenty minutes.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating sticker -->
+    <div style="position:absolute; top:60px; right:60px; transform:rotate(-8deg); background:#FBEFE3; color:#241229; padding:10px 18px; border:2px solid #241229; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; box-shadow:4px 4px 0 #241229;">
+      ★ Pop ≠ shallow
+    </div>
+  </section>
+
+  <!-- ============== SERVICES ============== -->
+  <section id="services" style="background:#FBEFE3; padding:120px 48px; border-bottom:2px solid #241229;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:80px;">
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:20px;">[ 02 / Services ]</div>
+        <h2 style="font-family:'Archivo Black', sans-serif; font-size:140px; line-height:0.88; letter-spacing:-0.04em; margin:0; text-transform:uppercase; color:#241229;">
+          What we<br>do <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#FF2D8F;">loudly.</span>
+        </h2>
+      </div>
+      <div style="max-width:340px; font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.55; padding-bottom:18px;">
+        Five disciplines, one studio. We blend them, hand-off between them, or pull a single one off the shelf. Pick whatever makes the most noise.
+      </div>
+    </div>
+
+    <!-- Service rows -->
+    <div style="border-top:2px solid #241229;">
+      <!-- row -->
+      <a href="#" style="display:grid; grid-template-columns:90px 1.2fr 2fr 0.5fr 60px; gap:32px; align-items:center; padding:36px 8px; border-bottom:2px solid #241229; text-decoration:none; color:#241229;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.18em;">[ 01 ]</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:54px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase;">Brand<br>Identity</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.55; max-width:520px;">Naming, logos, type, color, the whole identity rig — built like a sound system, not a moodboard. Plus guidelines your team will actually open.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6;">04 deliverables</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:46px; text-align:right; color:#FF2D8F;">↗</div>
+      </a>
+
+      <a href="#" style="display:grid; grid-template-columns:90px 1.2fr 2fr 0.5fr 60px; gap:32px; align-items:center; padding:36px 8px; border-bottom:2px solid #241229; text-decoration:none; color:#241229; background:#FFF6EE;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.18em;">[ 02 ]</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:54px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase;">Social &<br>Content</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.55; max-width:520px;">Always-on social management, monthly content drops, reels, photo, copy — a feed that earns the scroll instead of begging for it.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6;">06 deliverables</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:46px; text-align:right; color:#FF2D8F;">↗</div>
+      </a>
+
+      <a href="#" style="display:grid; grid-template-columns:90px 1.2fr 2fr 0.5fr 60px; gap:32px; align-items:center; padding:36px 8px; border-bottom:2px solid #241229; text-decoration:none; color:#241229;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.18em;">[ 03 ]</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:54px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase;">Influencer<br>Marketing</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.55; max-width:520px;">Talent casting across the Balkans and beyond, briefs that don't read like contracts, campaigns that move tickets and product.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6;">200+ creators</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:46px; text-align:right; color:#FF2D8F;">↗</div>
+      </a>
+
+      <a href="#" style="display:grid; grid-template-columns:90px 1.2fr 2fr 0.5fr 60px; gap:32px; align-items:center; padding:36px 8px; border-bottom:2px solid #241229; text-decoration:none; color:#241229; background:#FFF6EE;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.18em;">[ 04 ]</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:54px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase;">Event<br>Production</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.55; max-width:520px;">Launches, parties, brand activations, after-parties to the after-parties. We design the room, the run-of-show, and the morning-after content.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6;">end-to-end</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:46px; text-align:right; color:#FF2D8F;">↗</div>
+      </a>
+
+      <a href="#" style="display:grid; grid-template-columns:90px 1.2fr 2fr 0.5fr 60px; gap:32px; align-items:center; padding:36px 8px; border-bottom:2px solid #241229; text-decoration:none; color:#241229;">
+        <div style="font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.18em;">[ 05 ]</div>
+        <div style="font-family:'Archivo Black', sans-serif; font-size:54px; line-height:0.95; letter-spacing:-0.03em; text-transform:uppercase;">Employer<br>Branding</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.55; max-width:520px;">Hiring campaigns, culture decks, careers sites — making your company a place worth showing up to, on a Monday, in February.</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6;">strategy + creative</div>
+        <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:46px; text-align:right; color:#FF2D8F;">↗</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============== SELECTED WORK ============== -->
+  <section id="work" style="background:#241229; color:#FBEFE3; padding:120px 48px; border-bottom:2px solid #241229; position:relative;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:64px;">
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:20px; color:#FF2D8F;">[ 03 / Selected work ]</div>
+        <h2 style="font-family:'Archivo Black', sans-serif; font-size:140px; line-height:0.88; letter-spacing:-0.04em; margin:0; text-transform:uppercase;">
+          Things we've<br>made <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#FF2D8F;">pop.</span>
+        </h2>
+      </div>
+      <div style="display:flex; gap:24px; align-items:center; padding-bottom:18px;">
+        <a href="#" style="display:inline-flex; align-items:center; gap:10px; padding:14px 28px; border:2px solid #FBEFE3; border-radius:999px; color:#FBEFE3; text-decoration:none; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase;">
+          All 22 projects <span style="color:#FF2D8F;">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Asymmetric grid -->
+    <div style="display:grid; grid-template-columns:repeat(12, 1fr); gap:20px;">
+      <!-- card 1 — wide -->
+      <article style="grid-column:span 7;">
+        <div style="position:relative; aspect-ratio:16/10; background:#FF2D8F; border:2px solid #FBEFE3; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 800 500" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-w1" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(30)">
+                <rect width="20" height="20" fill="#FF2D8F"/>
+                <line x1="0" y1="0" x2="0" y2="20" stroke="#FBEFE3" stroke-width="1.5" opacity="0.4"/>
+              </pattern>
+            </defs>
+            <rect width="800" height="500" fill="url(#qk-w1)"/>
+          </svg>
+          <div style="position:absolute; left:20px; top:20px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#241229; background:#FBEFE3; padding:6px 12px;">[ image_w01 — drop_campaign.mp4 ]</div>
+          <div style="position:absolute; left:24px; bottom:24px; font-family:'Archivo Black', sans-serif; font-size:54px; line-height:0.9; letter-spacing:-0.03em; text-transform:uppercase; color:#241229;">Sunny Hill<br>After Hours</div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;">
+          <div><span style="color:#FF2D8F;">CLIENT</span> · Sunny Hill Festival</div>
+          <div><span style="opacity:0.5;">SCOPE</span> · Identity, social, events</div>
+          <div><span style="opacity:0.5;">YEAR</span> · 2025</div>
+        </div>
+      </article>
+
+      <!-- card 2 -->
+      <article style="grid-column:span 5;">
+        <div style="position:relative; aspect-ratio:5/6; background:#FBEFE3; border:2px solid #FBEFE3; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 500 600" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-w2" patternUnits="userSpaceOnUse" width="14" height="14">
+                <rect width="14" height="14" fill="#FBEFE3"/>
+                <circle cx="7" cy="7" r="1.6" fill="#241229" opacity="0.35"/>
+              </pattern>
+            </defs>
+            <rect width="500" height="600" fill="url(#qk-w2)"/>
+          </svg>
+          <div style="position:absolute; left:18px; top:18px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#241229;">[ image_w02 — bottle.jpg ]</div>
+          <div style="position:absolute; left:20px; bottom:20px; font-family:'Archivo Black', sans-serif; font-size:40px; line-height:0.9; letter-spacing:-0.03em; text-transform:uppercase; color:#241229;">Peja Soda<br>Rebrand</div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;">
+          <div><span style="color:#FF2D8F;">CLIENT</span> · Peja Soda</div>
+          <div><span style="opacity:0.5;">YEAR</span> · 2024</div>
+        </div>
+      </article>
+
+      <!-- card 3 -->
+      <article style="grid-column:span 4;">
+        <div style="position:relative; aspect-ratio:1/1; background:#241229; border:2px solid #FBEFE3; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 400 400" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-w3" patternUnits="userSpaceOnUse" width="8" height="8">
+                <rect width="8" height="8" fill="#241229"/>
+                <rect width="4" height="4" fill="#FF2D8F" opacity="0.4"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="400" fill="url(#qk-w3)"/>
+          </svg>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) rotate(-6deg); font-family:'Instrument Serif', serif; font-style:italic; font-size:64px; color:#FBEFE3; text-align:center; line-height:0.95;">Hima<br>Records</div>
+          <div style="position:absolute; left:14px; bottom:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#FBEFE3; opacity:0.7;">image_w03 — sleeve.png</div>
+        </div>
+        <div style="margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;">
+          <span style="color:#FF2D8F;">CLIENT</span> · Hima Records — 2024
+        </div>
+      </article>
+
+      <!-- card 4 -->
+      <article style="grid-column:span 4;">
+        <div style="position:relative; aspect-ratio:1/1; background:#FF2D8F; border:2px solid #FBEFE3; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 400 400" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-w4" patternUnits="userSpaceOnUse" width="16" height="16" patternTransform="rotate(-45)">
+                <rect width="16" height="16" fill="#FF2D8F"/>
+                <line x1="0" y1="0" x2="0" y2="16" stroke="#241229" stroke-width="1.2" opacity="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="400" fill="url(#qk-w4)"/>
+          </svg>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); text-align:center;">
+            <div style="font-family:'Archivo Black', sans-serif; font-size:80px; line-height:0.85; color:#241229; letter-spacing:-0.04em;">EUROPEAN</div>
+            <div style="font-family:'Instrument Serif', serif; font-style:italic; font-size:46px; color:#FBEFE3; margin-top:-6px;">heat. week.</div>
+          </div>
+          <div style="position:absolute; left:14px; bottom:14px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#241229;">image_w04 — poster.png</div>
+        </div>
+        <div style="margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;">
+          <span style="color:#FF2D8F;">CLIENT</span> · European Heat — 2025
+        </div>
+      </article>
+
+      <!-- card 5 -->
+      <article style="grid-column:span 4;">
+        <div style="position:relative; aspect-ratio:1/1; background:#FBEFE3; border:2px solid #FBEFE3; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 400 400" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-w5" patternUnits="userSpaceOnUse" width="22" height="22">
+                <rect width="22" height="22" fill="#FBEFE3"/>
+                <rect x="2" y="2" width="18" height="18" fill="none" stroke="#241229" stroke-width="1" opacity="0.3"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="400" fill="url(#qk-w5)"/>
+          </svg>
+          <div style="position:absolute; left:16px; top:16px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#241229;">[ image_w05 — careers.jpg ]</div>
+          <div style="position:absolute; left:20px; bottom:20px; font-family:'Archivo Black', sans-serif; font-size:38px; line-height:0.9; letter-spacing:-0.03em; text-transform:uppercase; color:#241229;">Solaborate<br>Careers</div>
+        </div>
+        <div style="margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;">
+          <span style="color:#FF2D8F;">CLIENT</span> · Solaborate — 2024
+        </div>
+      </article>
+
+      <!-- card 6 — wide -->
+      <article style="grid-column:span 12;">
+        <div style="position:relative; aspect-ratio:21/7; background:#FF2D8F; border:2px solid #FBEFE3; overflow:hidden;">
+          <svg width="100%" height="100%" viewBox="0 0 1200 400" preserveAspectRatio="none">
+            <defs>
+              <pattern id="qk-w6" patternUnits="userSpaceOnUse" width="30" height="30">
+                <rect width="30" height="30" fill="#FF2D8F"/>
+                <circle cx="15" cy="15" r="4" fill="#241229" opacity="0.45"/>
+              </pattern>
+            </defs>
+            <rect width="1200" height="400" fill="url(#qk-w6)"/>
+          </svg>
+          <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-family:'Archivo Black', sans-serif; font-size:140px; letter-spacing:-0.04em; color:#241229; text-transform:uppercase; line-height:0.85; text-align:center;">
+            Kosovo Beer Fest <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">'25</span>
+          </div>
+          <div style="position:absolute; left:20px; top:20px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#241229; background:#FBEFE3; padding:6px 12px;">[ image_w06 — keyvisual.psd ]</div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;">
+          <div><span style="color:#FF2D8F;">CLIENT</span> · Kosovo Beer Fest</div>
+          <div><span style="opacity:0.5;">SCOPE</span> · Identity, key visuals, on-ground activation</div>
+          <div><span style="opacity:0.5;">YEAR</span> · 2025</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============== STUDIO / TEAM ============== -->
+  <section style="background:#FBEFE3; padding:120px 48px; border-bottom:2px solid #241229; position:relative;">
+    <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:80px; align-items:start;">
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:20px;">[ 04 / Inside the house ]</div>
+        <h2 style="font-family:'Archivo Black', sans-serif; font-size:128px; line-height:0.88; letter-spacing:-0.04em; margin:0 0 36px; text-transform:uppercase; color:#241229;">
+          A small<br>studio<br>that <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#FF2D8F;">moves<br>loud.</span>
+        </h2>
+        <p style="font-family:'Space Grotesk', sans-serif; font-size:17px; line-height:1.55; max-width:520px; margin:0 0 24px;">
+          Eight people, one couch, a wall of posters, and a coffee machine that doesn't sleep. We're small enough that your project gets the founders in the room, and loud enough that you'll hear about it long after the campaign ends.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#" style="display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border:2px solid #241229; border-radius:999px; background:#241229; color:#FBEFE3; text-decoration:none; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase;">
+            Meet the team <span style="color:#FF2D8F;">→</span>
+          </a>
+          <a href="#" style="display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border:2px solid #241229; border-radius:999px; color:#241229; text-decoration:none; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase;">
+            We're hiring · 3
+          </a>
+        </div>
+      </div>
+
+      <!-- Team grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+        <div style="position:relative; aspect-ratio:4/5; background:#FF2D8F; border:2px solid #241229; overflow:hidden; transform:rotate(-1.5deg);">
+          <svg width="100%" height="100%" viewBox="0 0 200 250" preserveAspectRatio="none"><defs><pattern id="qk-t1" patternUnits="userSpaceOnUse" width="12" height="12"><rect width="12" height="12" fill="#FF2D8F"/><circle cx="6" cy="6" r="1.4" fill="#241229" opacity="0.4"/></pattern></defs><rect width="200" height="250" fill="url(#qk-t1)"/></svg>
+          <div style="position:absolute; left:10px; bottom:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#241229;">portrait_01.jpg</div>
+        </div>
+        <div style="position:relative; aspect-ratio:4/5; background:#241229; border:2px solid #241229; overflow:hidden; transform:rotate(1.5deg) translateY(28px);">
+          <svg width="100%" height="100%" viewBox="0 0 200 250" preserveAspectRatio="none"><rect width="200" height="250" fill="#241229"/><g opacity="0.35"><line x1="0" y1="0" x2="200" y2="250" stroke="#FBEFE3"/><line x1="200" y1="0" x2="0" y2="250" stroke="#FBEFE3"/></g></svg>
+          <div style="position:absolute; left:10px; bottom:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#FBEFE3;">portrait_02.jpg</div>
+        </div>
+        <div style="position:relative; aspect-ratio:4/5; background:#FBEFE3; border:2px solid #241229; overflow:hidden; transform:rotate(2deg);">
+          <svg width="100%" height="100%" viewBox="0 0 200 250" preserveAspectRatio="none"><defs><pattern id="qk-t3" patternUnits="userSpaceOnUse" width="16" height="16" patternTransform="rotate(45)"><rect width="16" height="16" fill="#FBEFE3"/><line x1="0" y1="0" x2="0" y2="16" stroke="#241229" stroke-width="1" opacity="0.4"/></pattern></defs><rect width="200" height="250" fill="url(#qk-t3)"/></svg>
+          <div style="position:absolute; left:10px; bottom:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#241229;">portrait_03.jpg</div>
+        </div>
+        <div style="position:relative; aspect-ratio:4/5; background:#FF2D8F; border:2px solid #241229; overflow:hidden; transform:rotate(-2deg) translateY(28px);">
+          <svg width="100%" height="100%" viewBox="0 0 200 250" preserveAspectRatio="none"><defs><pattern id="qk-t4" patternUnits="userSpaceOnUse" width="10" height="10"><rect width="10" height="10" fill="#FF2D8F"/><rect width="5" height="5" fill="#241229" opacity="0.25"/></pattern></defs><rect width="200" height="250" fill="url(#qk-t4)"/></svg>
+          <div style="position:absolute; left:10px; bottom:10px; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#241229;">portrait_04.jpg</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Numbers strip -->
+    <div style="margin-top:100px; display:grid; grid-template-columns:repeat(4, 1fr); gap:0; border-top:2px solid #241229; border-bottom:2px solid #241229;">
+      <div style="padding:32px 24px; border-right:2px solid #241229;">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.04em; color:#241229;">06<span style="color:#FF2D8F;">.</span></div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-top:8px; opacity:0.7;">years in the room</div>
+      </div>
+      <div style="padding:32px 24px; border-right:2px solid #241229;">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.04em; color:#241229;">48<span style="color:#FF2D8F;">+</span></div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-top:8px; opacity:0.7;">brands made loud</div>
+      </div>
+      <div style="padding:32px 24px; border-right:2px solid #241229;">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.04em; color:#241229;">22<span style="color:#FF2D8F;">,</span></div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-top:8px; opacity:0.7;">events produced</div>
+      </div>
+      <div style="padding:32px 24px;">
+        <div style="font-family:'Archivo Black', sans-serif; font-size:96px; line-height:1; letter-spacing:-0.04em; color:#241229;">∞</div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-top:8px; opacity:0.7;">coffees pulled</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== JOURNAL / NEWS STRIP ============== -->
+  <section id="journal" style="background:#FBEFE3; padding:100px 48px; border-bottom:2px solid #241229;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px;">
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:16px;">[ 05 / Journal ]</div>
+        <h2 style="font-family:'Archivo Black', sans-serif; font-size:88px; line-height:0.9; letter-spacing:-0.04em; margin:0; text-transform:uppercase; color:#241229;">From the<br>poster wall.</h2>
+      </div>
+      <a href="#" style="font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#241229; text-decoration:none; border-bottom:2px solid #241229; padding-bottom:4px;">All entries →</a>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:2px solid #241229;">
+      <a href="#" style="display:block; padding:28px 24px 28px 0; border-bottom:2px solid #241229; text-decoration:none; color:#241229;">
+        <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:18px;"><span style="color:#FF2D8F;">FIELD NOTE</span><span>06.2026</span></div>
+        <h3 style="font-family:'Instrument Serif', serif; font-size:32px; line-height:1.1; margin:0 0 14px;">How we built a brand for a festival in 48 hours <span style="font-style:italic;">(and didn't sleep)</span>.</h3>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; opacity:0.6;">04 min read</div>
+      </a>
+      <a href="#" style="display:block; padding:28px 24px; border-bottom:2px solid #241229; border-left:2px solid #241229; border-right:2px solid #241229; text-decoration:none; color:#241229;">
+        <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:18px;"><span style="color:#FF2D8F;">PLAYBOOK</span><span>05.2026</span></div>
+        <h3 style="font-family:'Instrument Serif', serif; font-size:32px; line-height:1.1; margin:0 0 14px;">The five briefs we wish more clients would write before the kickoff call.</h3>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; opacity:0.6;">07 min read</div>
+      </a>
+      <a href="#" style="display:block; padding:28px 0 28px 24px; border-bottom:2px solid #241229; text-decoration:none; color:#241229;">
+        <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:18px;"><span style="color:#FF2D8F;">CASE STUDY</span><span>04.2026</span></div>
+        <h3 style="font-family:'Instrument Serif', serif; font-size:32px; line-height:1.1; margin:0 0 14px;">Sunny Hill, on the inside — a year of identity work for the loudest week in Prishtina.</h3>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; opacity:0.6;">12 min read</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============== BIG CTA ============== -->
+  <section id="contact" style="background:#FF2D8F; color:#241229; padding:120px 48px; position:relative; overflow:hidden; border-bottom:2px solid #241229;">
+    <!-- floating Q sticker -->
+    <div style="position:absolute; right:60px; top:60px; width:200px; height:200px; animation:qk-spin 18s linear infinite;">
+      <svg viewBox="0 0 200 200" width="100%" height="100%">
+        <defs>
+          <path id="qk-circle2" d="M 100,100 m -80,0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0"/>
+        </defs>
+        <circle cx="100" cy="100" r="94" fill="#241229" stroke="#241229" stroke-width="2"/>
+        <text font-family="'JetBrains Mono', monospace" font-size="13" letter-spacing="4" font-weight="700" fill="#FBEFE3">
+          <textPath href="#qk-circle2">LET'S MAKE IT POP • LET'S MAKE IT POP •   </textPath>
+        </text>
+        <text x="100" y="116" text-anchor="middle" font-family="'Instrument Serif', serif" font-style="italic" font-size="76" fill="#FF2D8F">q</text>
+      </svg>
+    </div>
+
+    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:32px;">[ 06 / Get in touch ]</div>
+    <h2 style="font-family:'Archivo Black', sans-serif; font-size:220px; line-height:0.85; letter-spacing:-0.045em; margin:0 0 32px; text-transform:uppercase; color:#241229; max-width:1100px;">
+      Let's make<br>something <span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400;">pop.</span>
+    </h2>
+
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; max-width:1280px; border-top:2px solid #241229; padding-top:32px;">
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:10px;">// new business</div>
+        <a href="mailto:hello@qikas.house" style="font-family:'Archivo Black', sans-serif; font-size:34px; line-height:1; letter-spacing:-0.02em; color:#241229; text-decoration:none;">hello@qikas.house</a>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:10px;">// careers</div>
+        <a href="mailto:join@qikas.house" style="font-family:'Archivo Black', sans-serif; font-size:22px; line-height:1.1; color:#241229; text-decoration:none;">join@qikas.house</a>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:10px;">// studio</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.4;">Rr. Bedri Pejani 14<br>10000 Prishtina · Kosovo</div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:10px;">// hours</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:15px; line-height:1.4;">Mon–Fri · 09:00–19:00<br>Loud nights · by invitation</div>
+      </div>
+    </div>
+
+    <!-- sticker -->
+    <div style="position:absolute; left:50%; bottom:40px; transform:translateX(-50%) rotate(-3deg); background:#FBEFE3; color:#241229; padding:14px 26px; border:2px solid #241229; font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; box-shadow:5px 5px 0 #241229; display:flex; align-items:center; gap:14px;">
+      <span style="display:inline-block; width:10px; height:10px; background:#FF2D8F; border-radius:50%; animation:qk-blink 1.2s infinite;"></span>
+      Booking 04 projects for Q3 2026
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer style="background:#241229; color:#FBEFE3; padding:60px 48px 28px;">
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; padding-bottom:64px; border-bottom:1.5px solid #FBEFE3;">
+      <div>
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+          <div style="width:42px; height:42px; background:#FF2D8F; display:grid; place-items:center; border:2px solid #FBEFE3;">
+            <span style="font-family:'Instrument Serif', serif; font-style:italic; font-size:32px; line-height:1; color:#FBEFE3; transform:translate(1px,-1px);">q</span>
+          </div>
+          <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;">Qikas®<br><span style="opacity:0.6;">Creative House</span></div>
+        </div>
+        <p style="font-family:'Space Grotesk', sans-serif; font-size:14px; line-height:1.55; max-width:340px; opacity:0.75;">A creative house from Prishtina, Kosovo. We help brands stop being quiet — through identity, content, influence, and events.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.5; margin-bottom:18px;">/ Studio</div>
+        <div style="display:flex; flex-direction:column; gap:10px; font-family:'Space Grotesk', sans-serif; font-size:15px;">
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">Work</a>
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">Services</a>
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">Inside the house</a>
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">Journal</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.5; margin-bottom:18px;">/ Elsewhere</div>
+        <div style="display:flex; flex-direction:column; gap:10px; font-family:'Space Grotesk', sans-serif; font-size:15px;">
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">Instagram <span style="opacity:0.4;">↗</span></a>
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">LinkedIn <span style="opacity:0.4;">↗</span></a>
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">TikTok <span style="opacity:0.4;">↗</span></a>
+          <a href="#" style="color:#FBEFE3; text-decoration:none;">Behance <span style="opacity:0.4;">↗</span></a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.5; margin-bottom:18px;">/ Newsletter</div>
+        <div style="font-family:'Space Grotesk', sans-serif; font-size:14px; opacity:0.75; margin-bottom:14px;">One loud email a month. No spam, no bullet-pointed listicles.</div>
+        <form style="display:flex; border:2px solid #FBEFE3; border-radius:999px; overflow:hidden;">
+          <input type="email" placeholder="you@studio.email" style="flex:1; background:transparent; border:0; padding:12px 18px; color:#FBEFE3; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.08em; outline:none;">
+          <button type="button" style="background:#FF2D8F; color:#241229; border:0; padding:12px 22px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; cursor:pointer;">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Giant footer wordmark -->
+    <div style="padding-top:48px; padding-bottom:12px;">
+      <div style="font-family:'Archivo Black', sans-serif; font-size:280px; line-height:0.8; letter-spacing:-0.05em; color:#FBEFE3; text-transform:uppercase;">
+        QIKAS<span style="font-family:'Instrument Serif', serif; font-style:italic; font-weight:400; color:#FF2D8F;">®</span>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; opacity:0.6;">
+      <div>© MMXXVI · Qikas Creative House sh.p.k.</div>
+      <div>Prishtina · Kosovo · 42.66°N 21.16°E</div>
+      <div>Made loud — last touched 06.2026</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,7 +1,9 @@
 /**
  * ImageSlot — a fillable photography slot.
  *
- * Pass `src` (a file in /public/images) to show a real photograph; until then
+ * Pass `src` to show a real photograph. Files live in /public/assets and are
+ * referenced from the site root — e.g. public/assets/foto.jpeg → src="/assets/foto.jpeg".
+ * Until a src is given,
  * it renders an on-brand placeholder carrying the art-direction caption so the
  * layout reads correctly with zero assets. The parent card owns the border
  * radius / overflow / hover-grow, so this just fills its frame.

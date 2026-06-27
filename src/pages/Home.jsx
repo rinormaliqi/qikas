@@ -166,14 +166,14 @@ export default function Home() {
           <div className="qk-bob qk-orbit" style={css('position:absolute; left:-20px; top:120px;')}>
             <div className="qk-card" style={css('width:170px; height:170px; border-radius:50%; overflow:hidden; box-shadow:0 20px 40px -16px rgba(212,1,74,0.30); border:4px solid #fff; transform:rotate(-6deg);')}>
               <div className="qk-hover-grow" style={css('width:100%; height:100%;')}>
-                <ImageSlot ratio="1/1" placeholder="Editorial portrait" eager={true} src='/public/assets/foto3.jpeg'/>
+                <ImageSlot ratio="1/1" placeholder="Editorial portrait" eager={true} src='/assets/foto3.jpeg'/>
               </div>
             </div>
           </div>
           <div className="qk-bob qk-orbit" style={css('position:absolute; right:0; top:200px; animation-delay:-2.5s;')}>
             <div className="qk-card" style={css('width:200px; height:240px; border-radius:120px; overflow:hidden; box-shadow:0 24px 50px -18px rgba(212,1,74,0.32); border:4px solid #fff; transform:rotate(8deg);')}>
               <div className="qk-hover-grow" style={css('width:100%; height:100%;')}>
-                <ImageSlot ratio="5/6" placeholder="Studio still" eager={true} src='/public/assets/foto.jpeg'/>
+                <ImageSlot ratio="5/6" placeholder="Studio still" eager={true} src='/assets/foto.jpeg'/>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function Home() {
             </div>
           ) : (
             <div key={i} className="qk-card" style={css(`break-inside:avoid; margin:0 0 28px; border-radius:${m.radius}; overflow:hidden; box-shadow:0 20px 50px -25px rgba(212,1,74,0.18);`)}>
-              <div className="qk-hover-grow"><ImageSlot ratio={m.ratio} placeholder={m.cap} src='public/assets/foto4.jpeg' /></div>
+              <div className="qk-hover-grow"><ImageSlot ratio={m.ratio} placeholder={m.cap} src='/assets/foto4.jpeg' /></div>
             </div>
           ))}
         </div>
